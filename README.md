@@ -1,2 +1,2 @@
 # Pytorch-learning
-learning Pytorch with Morfan
+龙曲良pytorch课程笔记
