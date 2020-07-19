@@ -1,0 +1,6 @@
+1. Initialization
+同样的网络同样的状态，初始化不同会得到不同的结果
+2. Learning rate
+learning rate过大模型会在极值点附近震动
+3. escape minima
+添加一个惯性使得模型得以逃出局部最小
