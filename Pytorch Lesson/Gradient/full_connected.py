@@ -4,10 +4,11 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 
-batch_size=200
-learning_rate=0.01
-epochs=10
+batch_size = 200
+learning_rate = 0.01
+epochs = 10
 
+# 导入训练和测试数据
 train_loader = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=True, download=True,
                    transform=transforms.Compose([
@@ -22,6 +23,8 @@ test_loader = torch.utils.data.DataLoader(
     ])),
     batch_size=batch_size, shuffle=True)
 
+
+# 生成一个全连接层类
 class MLP(nn.module):
 
     def __init__(self):
@@ -41,15 +44,19 @@ class MLP(nn.module):
 
             return x
 
+
 # nn需要实例化
+# 创建实例，设定优化器和loss function
 net = MLP()
-optimizer = optim.SGD(net.parameters(), lr = learning_rate)
+optimizer = optim.SGD(net.parameters(), lr=learning_rate)
 criteon = nn.CrossEntropyLoss()
 
+
+# 开始训练
 for epoch in range(epochs):
 
     for batch_idx, (data, target) in enumerate(train_loader):
-        data = data.view(-1, 28*28)
+        data = data.view(-1, 28 * 28)
 
         logits = net(data)
         loss = criteon(logits, target)
